@@ -4,6 +4,9 @@ import itertools
 sum_match=2020
 
 def part1(data, sum_match=sum_match):
+    # solution with nested loops
+    # find product of two elements that sum to 
+    # sum_match
     for i, x in enumerate(data):
         for j, y in enumerate(data):
             if i == j:
@@ -12,6 +15,9 @@ def part1(data, sum_match=sum_match):
                 return x*y, x, y
 
 def part2(data, sum_match=sum_match):
+    # solution with itertools
+    # find product of three elements that sum to 
+    # sum_match
     combinations = list(itertools.combinations(data,3))
     for item in combinations:
         if sum(item) == sum_match:
