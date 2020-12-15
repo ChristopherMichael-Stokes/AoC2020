@@ -8,7 +8,7 @@ def memory_game(start_list, N):
 
     for i, n in enumerate(start_list):
         occurences[n].append(i)
-    last_spoken = start_list[-1]
+    spoken = start_list[-1]
 
     for t in range(len(start_list), N):
         # useful to print for large N
@@ -16,15 +16,14 @@ def memory_game(start_list, N):
             print(f'{t:010}', end = '\r')
 
         # apply game rules to find next number
-        last_occurences = occurences[last_spoken]
-        if last_occurences == [] or len(last_occurences) == 1:
+        last_occurences = occurences[spoken]
+        if len(last_occurences) <= 1:
             spoken = 0
         else:
             spoken = (t-1) - last_occurences[-2]
 
         occurences[spoken].append(t)
-        last_spoken = spoken
-    return last_spoken
+    return spoken
 
 if __name__=='__main__':
     start_list = [0,5,4,1,10,14,7]
